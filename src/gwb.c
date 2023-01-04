@@ -42,7 +42,7 @@ void load_uri(WebKitWebView *view, const char *uri)
 {
     const char *prefix[]={"http://", "https://", "file://", "about:", NULL};
     for(const char **p=prefix; *p; p++)
-        if(strstr(uri, *prefix))
+        if(strstr(uri, *p))
             { webkit_web_view_load_uri(WEBKIT_WEB_VIEW(view), uri); return;}
 
     /* 應先檢測uri是不是文件，但這依賴於系統，暫時不搞，粗暴地用http嘗試打開 */
