@@ -1,5 +1,5 @@
 /* *************************************************************************
- *     ChangeLog：面向開發者的變更日志。
+ *     gwb.h：與gwb.c相應的頭文件。
  *     版權 (C) 2023 gsm <406643764@qq.com>
  *     本程序為自由軟件：你可以依據自由軟件基金會所發布的第三版或更高版本的
  * GNU通用公共許可證重新發布、修改本程序。
@@ -9,12 +9,12 @@
  * <http://www.gnu.org/licenses/>。
  * ************************************************************************/
 
-2023年 01月 04日 星期三 19:51:09 CST	gsm <406643764@qq.com>
-	* 發布第0.2版；
-	* 實現打開URI列表的功能；
-	* 創建配置文件configh.h以便配置程序；
-	* 實現補全URI的功能。
+#ifndef GWB_H
+#define GWB_H
 
-2023年 01月 01日 星期日 19:28:36 CST	gsm <406643764@qq.com>
-	* 發布第0.1版；
-	* 實現具有最基本功能的網頁瀏覽器。
+WebKitWebView *request_new_client(WebKitWebView *web_view, WebKitNavigationAction *act, gpointer data);
+WebKitWebView *create_client(char *uri, WebKitWebView *related_view, bool show);
+void update_title(WebKitWebView *web_view, GParamSpec *ps, GtkWidget *win);
+void load_uri(WebKitWebView *web_view, const char *uri);
+
+#endif

@@ -8,13 +8,13 @@
 ./"     你應該已經收到一份附隨此程序的GNU通用公共許可證副本。否則，請參閱
 ./" <http://www.gnu.org/licenses/>。
 ./" ************************************************************************/
-.TH gwb 1 2023年1月 "gwb 0.1" gwb
+.TH gwb 1 2023年1月 "gwb 0.2" gwb
 .
 .SH 名稱
 gwb \- gwb（gsm's web browser），是一個用C語言編寫的基於webkitgtk的網頁瀏覽器。
 .
 .SH 摘要
-.B gwb [URI]
+.B gwb [URI]...
 .
 .SH 描述
 .PP
@@ -28,7 +28,7 @@ gwb（gsm's web browser），是一個用C語言編寫的基於webkitgtk的網�
 .SS 通用說明
 .
 .TP
-不帶參數或以多個參數運行gwb，將打開默認網頁。用一個指定的URI作爲參數運行gwb，則會打開該URI。
+不帶參數運行gwb，將打開主頁。用指定的URI列表作爲參數運行gwb，則會打開這些URI。譬如：gwb bing.com或gwb bing.com baidu.com。
 .
 .SS 鍵盤命令
 .
@@ -43,11 +43,11 @@ gwb（gsm's web browser），是一個用C語言編寫的基於webkitgtk的網�
 .SS 配置
 .
 .TP
-目前只能通過修改源代碼來修改配置。具體是修改gwb.c。
+目前只能通過修改源代碼來修改配置。具體是修改config.h。
 .
 .SH 漏洞報告
 .
-若你發現漏洞，則請向<406643764@qq.com>報告。
+若你發現漏洞，則請向<406643764@qq.com>或<https://sourceforge.net/p/gwb/tickets/>報告。
 .
 .SH 作者
 .
