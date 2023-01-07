@@ -13,7 +13,7 @@ export MAKE := make
 export prefix := /usr
 subdirs := src man res
 doc := AUTHORS ChangeLog COPYING NEWS README THANKS TODO
-package := gwb 
+export package := gwb
 
 .PHONY : all install install-strip uninstall clean
 all :

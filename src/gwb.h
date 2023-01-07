@@ -12,9 +12,16 @@
 #ifndef GWB_H
 #define GWB_H
 
-WebKitWebView *request_new_client(WebKitWebView *web_view, WebKitNavigationAction *act, gpointer data);
-WebKitWebView *create_client(char *uri, WebKitWebView *related_view, bool show);
-void update_title(WebKitWebView *web_view, GParamSpec *ps, GtkWidget *win);
+GtkBuilder *load_ui(void);
+void setup_main_win(void);
+void notebook_switch_page(GtkNotebook *notebook, GtkWidget *page, guint page_n, GtkWindow *win);
+void new_tab_page(GtkButton *button, gpointer data);
+void search(GtkEntry* entry, gpointer data);
+WebKitWebView *request_new_client(WebKitWebView *view, WebKitNavigationAction *act, gpointer data);
+WebKitWebView *create_client(const char *uri, WebKitWebView *related_view, bool show);
+void remove_tab_page(GtkButton *button, GtkWidget *page);
+void update_title(WebKitWebView *web_view, GParamSpec *ps, GtkWidget *label);
 void load_uri(WebKitWebView *web_view, const char *uri);
+void show_web_view(WebKitWebView *view, GtkNotebook *notebook);
 
 #endif

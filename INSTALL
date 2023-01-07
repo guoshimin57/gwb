@@ -21,6 +21,8 @@
        gstreamer1-plugins-fc、gstreamer1-plugins-bad-free-extras、
        gstreamer1-plugins-good-extras、gstreamer1-plugins-bad-free-zbar、
        gstreamer1-plugins-bad-free-fluidsynth、gstreamer1-plugins-entrans。
+    3. 若要使用mk_logo.sh生成圖標文件來代替gwb.png，則應先安裝ImageMagick及其
+       使用的字體，如FreeMono。
 
 二、安裝此程序的步驟為：
     1. cd gwb；

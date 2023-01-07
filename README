@@ -12,8 +12,8 @@
 配置方法：修改gwb.c文件。
 安裝方法：請參閱INSTALL。
 使用方法：詳見gwb(1)。安裝之後，用man gwb命令來查看手冊。
-軟件首頁：https://sourceforge.net/projects/gwb/ 。
-漏洞報告：406643764@qq.com。
+軟件首頁：<https://sourceforge.net/projects/gwb/>。
+漏洞報告：<406643764@qq.com>或<https://sourceforge.net/p/gwb/tickets/>。
 作者：詳見AUTHORS。
 捐助：提交gwb的缺陷反饋、功能建議、補丁就是對gwb最大的捐助；當然，對於捐款這
     樣膚淺的行爲，我也是很喜歡。目前僅僅支持微信付款的捐助方式，以下是我的微

@@ -12,8 +12,14 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define HOME_PAGE "www.bing.com"
-#define WIN_WIDTH 1024
-#define WIN_HEIGHT 768
+#define PREFIX "/usr" // gwb的安裝路徑前綴，應與Makefile的prefix保持一致
+#define STD_UI_FILE PREFIX"/share/gwb/gwb.ui" // 安裝於系統中的UI文件全名
+#define HOME_PAGE "www.bing.com" // 主頁
+#define SHOW_HOME_PAGE 1 // 是否顯示主頁，0表示不顯示，非0整數表示顯示
+#define DEFAULT_URI (SHOW_HOME_PAGE ? HOME_PAGE : "about:blank") // 默認URI
+#define FOCUS_NEW_TAB_PAGE 1 // 是否聚焦新標籤頁，0表示不聚焦，非0整數表示聚焦
+#define SEARCH_ENTRY_WIDTH_CHARS 20 // 以英文字符數量計算的搜索框寬度
+#define MAIN_WIN_WIDTH 1024 // gwb主窗口的寬度
+#define MAIN_WIN_HEIGHT 768 // gwb主窗口的高度
 
 #endif

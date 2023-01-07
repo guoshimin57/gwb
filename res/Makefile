@@ -12,9 +12,13 @@
 .PHONY : all install install-strip uninstall clean
 all :
 install :
-	install -D -m 644 gwb.desktop $(prefix)/share/applications/gwb.desktop
+	install -D -m 644 $(package).desktop $(prefix)/share/applications/$(package).desktop ;
+	install -D -m 644 $(package).png $(prefix)/share/pixmaps/$(package).png
+	install -D -m 644 $(package).ui $(prefix)/share/$(package)/$(package).ui
 install-strip :
 uninstall :
-	rm -f $(prefix)/share/applications/gwb.desktop
+	rm -f $(prefix)/share/applications/$(package).desktop ;
+	rm -f $(package).png $(prefix)/share/pixmaps/$(package).png
+	rm -f $(prefix)/share/$(package)/$(package).ui
 clean :
 	rm -f *~
