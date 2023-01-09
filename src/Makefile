@@ -10,7 +10,7 @@
 # *************************************************************************
 
 CC ?= gcc
-CFLAGS ?= -std=c17 -Wall -pedantic-errors $(DEBUG) `pkg-config --cflags --libs webkit2gtk-4.0`
+CFLAGS ?= -std=c17 -Wall -pedantic-errors $(DEBUG) `pkg-config --cflags --libs webkit2gtk-4.1`
 CTAGS ?= ctags
 tag ?= tags
 backup := $(wildcard *~)

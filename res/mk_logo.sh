@@ -13,9 +13,11 @@
 
 # logo尺寸，即正方形的邊長，單位爲像素
 a=256
+ratio=0.9
 
 #以下變量不應修改
-r=$(echo "$a/2" | bc -l)
+offset=$(echo "$a*(1-$ratio)" | bc -l)
+r=$(echo "$a/2-$offset" | bc -l)
 cx=$(echo "$a/2-1" | bc -l)
 cy=$cx
 pi=$(echo "4*a(1)" | bc -l)
@@ -24,12 +26,13 @@ w=$(echo "$r*$sin60" | bc -l)
 h=$(echo "$r/2" | bc -l)
 lx=$(echo "$cx-$w" | bc -l)
 rx=$(echo "$cx+$w" | bc -l)
+ty=$(echo "$offset-1" | bc -l)
 by=$(echo "$cy+$h" | bc -l)
 
 # 以下變量應根據字體調整，特別是fontsize前的縮放系數，用以取得字符實際大小
 fontname="FreeMono"
 fontsize=$(echo "$r*0.8" | bc -l)
-Gx=$(echo "$cx/2-0.5*$fontsize/2" | bc -l)
+Gx=$(echo "$cx-$r/2-0.5*$fontsize/2" | bc -l)
 Gy=$cy
 Wx=$(echo "$cx+$r/2-0.6*$fontsize/2" | bc -l)
 Wy=$cy
@@ -37,9 +40,9 @@ Bx=$(echo "$cx-0.5*$fontsize/2" | bc -l)
 By=$(echo "$cy+$r/2+0.6*$fontsize/2" | bc -l)
 
 convert -size ${a}x${a} xc:none -stroke black -strokewidth 3 \
-    -fill red -draw "path 'M $cx,$cy L $cx,0 A $r,$r 0 0,1 $rx,$by Z'" \
+    -fill red -draw "path 'M $cx,$cy L $cx,$ty A $r,$r 0 0,1 $rx,$by Z'" \
     -fill blue -draw "path 'M $cx,$cy L $rx,$by A $r,$r 0 0,1 $lx,$by Z'" \
-    -fill green -draw "path 'M $cx,$cy L $lx,$by A $r,$r 0 0,1 $cx,0 Z'" \
-    -fill gray -font $fontname -pointsize $fontsize \
+    -fill green -draw "path 'M $cx,$cy L $lx,$by A $r,$r 0 0,1 $cx,$ty Z'" \
+    -fill white -font $fontname -pointsize $fontsize -strokewidth 2 \
     -draw "text $Bx,$By 'B' text $Wx,$Wy 'W' text $Gx,$Gy 'G'" \
     gwb.png

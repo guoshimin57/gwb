@@ -15,10 +15,17 @@
 GtkBuilder *load_ui(void);
 void setup_main_win(void);
 void notebook_switch_page(GtkNotebook *notebook, GtkWidget *page, guint page_n, GtkWindow *win);
+void update_search_entry(guint page_n);
 void new_tab_page(GtkButton *button, gpointer data);
-void search(GtkEntry* entry, gpointer data);
+void search(GtkEntry* entry, GtkNotebook* notebook);
+void go_back(GtkButton *button, GtkNotebook* notebook);
+void go_forward(GtkButton *button, GtkNotebook* notebook);
+void reload(GtkButton *button, GtkNotebook* notebook);
+void go_home(GtkButton *button, GtkNotebook* notebook);
+GtkWidget* get_current_page(GtkNotebook* notebook);
 WebKitWebView *request_new_client(WebKitWebView *view, WebKitNavigationAction *act, gpointer data);
 WebKitWebView *create_client(const char *uri, WebKitWebView *related_view, bool show);
+void setup_tab_label(GtkWidget **label, GtkWidget **close_button, GtkWidget **tab_label);
 void remove_tab_page(GtkButton *button, GtkWidget *page);
 void update_title(WebKitWebView *web_view, GParamSpec *ps, GtkWidget *label);
 void load_uri(WebKitWebView *web_view, const char *uri);
