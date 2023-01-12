@@ -18,8 +18,8 @@
 #define SHOW_HOME_PAGE 1 // 是否顯示主頁，0表示不顯示，非0整數表示顯示
 #define DEFAULT_URI (SHOW_HOME_PAGE ? HOME_PAGE : "about:blank") // 默認URI
 #define FOCUS_NEW_TAB_PAGE 1 // 是否聚焦新標籤頁，0表示不聚焦，非0整數表示聚焦
-#define SEARCH_ENTRY_WIDTH_CHARS 30 // 以英文字符數量計算的搜索框寬度
-#define TAB_LABEL_WIDTH_CHARS 10 // 以英文字符數量計算的標籤頁的標籤寬度
+#define SEARCH_ENTRY_WIDTH_CHARS 20 // 以英文字符數量計算的搜索框寬度
+#define TAB_LABEL_WIDTH_CHARS 15 // 以英文字符數量計算的標籤頁的標籤寬度
 #define MAIN_WIN_WIDTH 1024 // gwb主窗口的寬度
 #define MAIN_WIN_HEIGHT 768 // gwb主窗口的高度
 

@@ -7,6 +7,20 @@
 
 GtkBuilder *builder=NULL;
 
+int main(int argc, char **argv)
+{
+    gtk_init(&argc, &argv);
+    builder=load_ui();
+    setup_main_win();
+    for(size_t i=1; i<argc; i++)
+        create_client(argv[i], NULL, true);
+    if(argc == 1)
+        create_client(DEFAULT_URI, NULL, true);
+    gtk_main();
+    g_object_unref(builder);
+    return 0;
+}
+
 GtkBuilder *load_ui(void)
 {
     GtkBuilder *builder=gtk_builder_new();
@@ -148,19 +162,35 @@ void setup_tab_label(GtkWidget **label, GtkWidget **close_button, GtkWidget **ta
 void remove_tab_page(GtkButton *button, GtkWidget *page)
 {
     GtkNotebook *notebook=GTK_NOTEBOOK(gtk_builder_get_object(builder, "notebook"));
-    int n=gtk_notebook_page_num(notebook, page);
-    gtk_notebook_remove_page(notebook, n);
+    if(gtk_notebook_get_n_pages(notebook) == 1)
+        gtk_main_quit();
+    gtk_notebook_remove_page(notebook, gtk_notebook_page_num(notebook, page));
 }
 
 void update_title(WebKitWebView *view, GParamSpec *ps, GtkWidget *label)
 {
     GObject *win=gtk_builder_get_object(builder, "main_win");
     GObject *notebook=gtk_builder_get_object(builder, "notebook");
-    gtk_window_set_title(GTK_WINDOW(win), webkit_web_view_get_title(view));
-    gtk_label_set_label(GTK_LABEL(label), webkit_web_view_get_title(view));
+    const gchar *text=webkit_web_view_get_title(view);
+    gtk_window_set_title(GTK_WINDOW(win), text);
+    gtk_label_set_label(GTK_LABEL(label), text);
+    fix_label_width(GTK_LABEL(label), text);
     update_search_entry(gtk_notebook_page_num(GTK_NOTEBOOK(notebook), GTK_WIDGET(view)));
 }
 
+void fix_label_width(GtkLabel *label, const char *text)
+{
+    int w, w0;
+    PangoLayout *layout=gtk_widget_create_pango_layout(GTK_WIDGET(label), text);
+    pango_layout_get_pixel_size(layout, &w, NULL);
+    pango_layout_set_text(layout, "a", -1);
+    pango_layout_get_pixel_size(layout, &w0, NULL);
+    int n=(w+w0-1)/w0;
+    if(n > TAB_LABEL_WIDTH_CHARS)
+        n=TAB_LABEL_WIDTH_CHARS;
+    gtk_label_set_width_chars(label, n);
+    gtk_label_set_ellipsize(label, PANGO_ELLIPSIZE_MIDDLE);
+}
 void load_uri(WebKitWebView *view, const char *uri)
 {
     const char *prefix[]={"http://", "https://", "file://", "about:", NULL};
@@ -185,18 +215,4 @@ void show_web_view(WebKitWebView *view, GtkNotebook *notebook)
             gtk_widget_grab_focus(GTK_WIDGET(view));
         }
     }
-}
-
-int main(int argc, char **argv)
-{
-    gtk_init(&argc, &argv);
-    builder=load_ui();
-    setup_main_win();
-    for(size_t i=1; i<argc; i++)
-        create_client(argv[i], NULL, true);
-    if(argc == 1)
-        create_client(DEFAULT_URI, NULL, true);
-    gtk_main();
-    g_object_unref(builder);
-    return 0;
 }

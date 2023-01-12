@@ -28,6 +28,7 @@ WebKitWebView *create_client(const char *uri, WebKitWebView *related_view, bool 
 void setup_tab_label(GtkWidget **label, GtkWidget **close_button, GtkWidget **tab_label);
 void remove_tab_page(GtkButton *button, GtkWidget *page);
 void update_title(WebKitWebView *web_view, GParamSpec *ps, GtkWidget *label);
+void fix_label_width(GtkLabel *label, const char *text);
 void load_uri(WebKitWebView *web_view, const char *uri);
 void show_web_view(WebKitWebView *view, GtkNotebook *notebook);
 

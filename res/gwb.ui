@@ -46,7 +46,7 @@
           <placeholder/>
         </child>
         <child type="action-end">
-          <object class="GtkBox">
+          <object class="GtkBox" id="pack_end_box">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <child>
