@@ -10,6 +10,7 @@
 # *************************************************************************
 
 CC ?= gcc
+#DEBUG ?= -ggdb3
 CFLAGS ?= -std=c17 -Wall -pedantic-errors $(DEBUG) `pkg-config --cflags --libs webkit2gtk-4.1`
 CTAGS ?= ctags
 tag ?= tags

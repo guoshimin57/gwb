@@ -5,6 +5,7 @@
   <object class="GtkImage" id="add_tab_page_image">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
+    <property name="tooltip-text" translatable="yes">打開新標籤頁</property>
     <property name="icon-name">list-add</property>
     <style>
       <class name="circular"/>
@@ -23,6 +24,7 @@
   <object class="GtkImage" id="go_home_image">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
+    <property name="tooltip-text" translatable="yes">主頁</property>
     <property name="icon-name">go-home</property>
   </object>
   <object class="GtkImage" id="reload_image">
@@ -64,12 +66,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSearchEntry" id="search_entry">
+              <object class="GtkEntry" id="search_entry">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="primary-icon-name">edit-find-symbolic</property>
-                <property name="primary-icon-activatable">False</property>
-                <property name="primary-icon-sensitive">False</property>
+                <property name="primary-icon-name">edit-find</property>
+                <property name="secondary-icon-name">non-starred</property>
+                <property name="secondary-icon-tooltip-text" translatable="yes">收藏</property>
                 <property name="placeholder-text" translatable="yes">請輸入網址</property>
                 <property name="input-purpose">url</property>
               </object>
@@ -80,13 +82,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="go_back_button">
+              <object class="GtkBox" id="favor_box">
                 <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-                <property name="image">go_back_image</property>
-                <property name="relief">none</property>
-                <property name="always-show-image">True</property>
+                <property name="can-focus">False</property>
+                <child>
+                  <placeholder/>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -95,11 +96,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="go_forward_button">
+              <object class="GtkButton" id="go_back_button">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="image">go_forward_image</property>
+                <property name="tooltip-text" translatable="yes">後退</property>
+                <property name="image">go_back_image</property>
                 <property name="relief">none</property>
               </object>
               <packing>
@@ -109,17 +111,33 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="reload_button">
+              <object class="GtkButton" id="go_forward_button">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="image">reload_image</property>
+                <property name="tooltip-text" translatable="yes">前進</property>
+                <property name="image">go_forward_image</property>
                 <property name="relief">none</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="reload_button">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">刷新</property>
+                <property name="image">reload_image</property>
+                <property name="relief">none</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">5</property>
               </packing>
             </child>
             <child>
@@ -133,7 +151,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">5</property>
+                <property name="position">6</property>
               </packing>
             </child>
           </object>
